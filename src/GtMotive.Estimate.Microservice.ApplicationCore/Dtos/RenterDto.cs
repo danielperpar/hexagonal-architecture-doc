@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace GtMotive.Estimate.Microservice.ApplicationCore.Dtos
 {
@@ -27,26 +28,31 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.Dtos
         /// <summary>
         /// Gets or Sets the renter id.
         /// </summary>
+        [Required]
         public Guid RenterId { get; set; }
 
         /// <summary>
         /// Gets or sets the first Name.
         /// </summary>
+        [Required]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Gets or sets the last name.
         /// </summary>
+        [Required]
         public string LastName { get; set; }
 
         /// <summary>
         /// Gets or sets the tax Id Number.
         /// </summary>
+        [Required]
         public string TaxIdNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the phone number.
         /// </summary>
+        [Required]
         public string PhoneNumber { get; set; }
     }
 }

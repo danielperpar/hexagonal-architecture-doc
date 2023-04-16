@@ -16,27 +16,17 @@ namespace GtMotive.Estimate.Microservice.Infrastructure.MongoDb.PersistenceConfi
         public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, T value)
         {
             var nominalType = args.NominalType;
-            var fields = nominalType.GetFields(BindingFlags.Instance | BindingFlags.Public);
             var propsAll = nominalType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
 
             var props = new List<PropertyInfo>();
             foreach (var prop in propsAll)
             {
-                if (prop.CanWrite)
-                {
-                    props.Add(prop);
-                }
+                props.Add(prop);
             }
 
             var bsonWriter = context.Writer;
 
             bsonWriter?.WriteStartDocument();
-
-            foreach (var field in fields)
-            {
-                bsonWriter.WriteName(field.Name);
-                BsonSerializer.Serialize(bsonWriter, field.FieldType, field.GetValue(value));
-            }
 
             foreach (var prop in props)
             {
@@ -58,13 +48,6 @@ namespace GtMotive.Estimate.Microservice.Infrastructure.MongoDb.PersistenceConfi
             while (bsonReader.ReadBsonType() != BsonType.EndOfDocument)
             {
                 var name = bsonReader.ReadName();
-
-                var field = actualType.GetField(name);
-                if (field != null)
-                {
-                    var value = BsonSerializer.Deserialize(bsonReader, field.FieldType);
-                    field.SetValue(obj, value);
-                }
 
                 var prop = actualType.GetProperty(name);
                 if (prop != null)
