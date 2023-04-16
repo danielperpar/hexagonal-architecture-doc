@@ -35,7 +35,7 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.Implementation
             var tradeMark = new TradeMark(input?.VehicleDto.TradeMark);
             var model = new Model(input?.VehicleDto.Model);
             var plateNumber = new PlateNumber(input?.VehicleDto.PlateNumber);
-            var fabYear = new Year(input?.VehicleDto.FabricationYear);
+            var fabYear = new FabricationYear(input?.VehicleDto.FabricationYear);
 
             var vehicle = new Vehicle(Guid.NewGuid(), tradeMark, model, plateNumber, fabYear);
 

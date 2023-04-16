@@ -20,6 +20,7 @@ namespace GtMotive.Estimate.Microservice.Microservice.Api.Controllers
 
         [HttpPost("addVehicletoFleet")]
         [ProducesResponseType(typeof(VehicleDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> AddVehicletoFleet(VehicleDto vechicleDto)
         {
             var request = new AddVehicleToFleetRequest { VehicleDto = vechicleDto };

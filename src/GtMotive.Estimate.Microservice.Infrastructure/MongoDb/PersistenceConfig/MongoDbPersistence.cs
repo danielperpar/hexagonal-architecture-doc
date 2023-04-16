@@ -20,7 +20,7 @@ namespace GtMotive.Estimate.Microservice.Infrastructure.MongoDb.PersistenceConfi
             BsonSerializer.RegisterSerializer(new BasicStructSerializer<PlateNumber>());
             BsonSerializer.RegisterSerializer(new BasicStructSerializer<TaxIdNumber>());
             BsonSerializer.RegisterSerializer(new BasicStructSerializer<TradeMark>());
-            BsonSerializer.RegisterSerializer(new BasicStructSerializer<Year>());
+            BsonSerializer.RegisterSerializer(new BasicStructSerializer<FabricationYear>());
 
             // Conventions
             var pack = new ConventionPack
