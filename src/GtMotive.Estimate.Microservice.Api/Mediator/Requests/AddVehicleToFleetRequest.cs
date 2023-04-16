@@ -4,7 +4,7 @@ using MediatR;
 
 namespace GtMotive.Estimate.Microservice.Api.Mediator.Requests
 {
-    public class AddVehicleToFleetRequest : IRequest<IWebApiPresenter>
+    public class AddVehicleToFleetRequest : IRequest<IAddVehicleToFleetPresenter>
     {
         public VehicleDto VehicleDto { get; set; }
     }

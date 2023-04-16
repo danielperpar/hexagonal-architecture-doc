@@ -17,5 +17,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
         }
 
         public string TradeMarkValue { get; }
+
+        public static TradeMark Create(string input)
+        {
+            return new TradeMark(input);
+        }
     }
 }

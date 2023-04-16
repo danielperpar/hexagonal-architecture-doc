@@ -8,25 +8,25 @@ using MediatR;
 
 namespace GtMotive.Estimate.Microservice.Api.Mediator.Handlers
 {
-    public class AddVehicleToFleetHandler : IRequestHandler<AddVehicleToFleetRequest, IWebApiPresenter>
+    public class AddVehicleToFleetHandler : IRequestHandler<AddVehicleToFleetRequest, IAddVehicleToFleetPresenter>
     {
-        private readonly IWebApiPresenter _addVehicleToFleetPresenter;
+        private readonly IAddVehicleToFleetPresenter _addVehicleToFleetPresenter;
         private readonly IUseCase<AddVehicleToFleetInput> _addVehicleToFleetUseCase;
 
         public AddVehicleToFleetHandler(
-            IWebApiPresenter webApiPresenter,
+            IAddVehicleToFleetPresenter webApiPresenter,
             IUseCase<AddVehicleToFleetInput> addVehicleToFleetUseCase)
         {
             _addVehicleToFleetPresenter = webApiPresenter;
             _addVehicleToFleetUseCase = addVehicleToFleetUseCase;
         }
 
-        public Task<IWebApiPresenter> Handle(AddVehicleToFleetRequest request, CancellationToken cancellationToken)
+        public async Task<IAddVehicleToFleetPresenter> Handle(AddVehicleToFleetRequest request, CancellationToken cancellationToken)
         {
             var vehicleDto = request?.VehicleDto;
             var input = new AddVehicleToFleetInput(vehicleDto);
-            _addVehicleToFleetUseCase.Execute(input);
-            return Task.FromResult(_addVehicleToFleetPresenter);
+            await _addVehicleToFleetUseCase.Execute(input);
+            return _addVehicleToFleetPresenter;
         }
     }
 }

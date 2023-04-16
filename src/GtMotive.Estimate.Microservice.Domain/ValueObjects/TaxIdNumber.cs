@@ -17,5 +17,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
         }
 
         public string TaxIdNumberValue { get; }
+
+        public static TaxIdNumber Create(string input)
+        {
+            return new TaxIdNumber(input);
+        }
     }
 }

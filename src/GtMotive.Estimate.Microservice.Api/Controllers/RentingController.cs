@@ -34,7 +34,10 @@ namespace GtMotive.Estimate.Microservice.Microservice.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetVehicles()
         {
+            var request = new GetVehiclesRequest { };
+            var presenter = await _mediator.Send(request);
 
+            return presenter.ActionResult;
         }
     }
 }

@@ -24,6 +24,11 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
 
         public string PhoneNumberValue { get; }
 
+        public static PhoneNumber Create(string input)
+        {
+            return new PhoneNumber(input);
+        }
+
         private static bool IsPhoneValid(string phoneNumber)
         {
             var regex = @"^([\+]?33[-]?|[0])?[1-9][0-9]{8}$";

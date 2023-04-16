@@ -12,15 +12,13 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.Dtos
         /// Initializes a new instance of the <see cref="RenterDto"/> class.
         /// </summary>
         /// <param name="renterId">renter Id.</param>
-        /// <param name="firstName">first name.</param>
-        /// <param name="lastName">last name.</param>
+        /// <param name="name">first name.</param>
         /// <param name="taxIdNumber">tax Id number.</param>
         /// <param name="phoneNumber">phone number.</param>
-        public RenterDto(Guid renterId, string firstName, string lastName, string taxIdNumber, string phoneNumber)
+        public RenterDto(Guid renterId, string name, string taxIdNumber, string phoneNumber)
         {
             RenterId = renterId;
-            FirstName = firstName;
-            LastName = lastName;
+            Name = name;
             TaxIdNumber = taxIdNumber;
             PhoneNumber = phoneNumber;
         }
@@ -32,16 +30,10 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.Dtos
         public Guid RenterId { get; set; }
 
         /// <summary>
-        /// Gets or sets the first Name.
+        /// Gets or sets the Name.
         /// </summary>
         [Required]
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last name.
-        /// </summary>
-        [Required]
-        public string LastName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the tax Id Number.

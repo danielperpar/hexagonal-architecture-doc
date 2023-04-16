@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using GtMotive.Estimate.Microservice.Api.UseCases.AddVehicleToFleet;
 using GtMotive.Estimate.Microservice.ApplicationCore.UseCases;
+using GtMotive.Estimate.Microservice.ApplicationCore.UseCases.GetVehicles;
 using GtMotive.Estimate.Microservice.ApplicationCore.UseCases.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -23,6 +24,7 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
             services.AddTransient<IUseCase<AddVehicleToFleetInput>, AddVehicleToFleetUseCase>();
+            services.AddTransient<IUseCase<GetVehiclesInput>, GetVehiclesUseCase>();
 
             return services;
         }

@@ -17,5 +17,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
         }
 
         public string PlateNumberValue { get; }
+
+        public static PlateNumber Create(string input)
+        {
+            return new PlateNumber(input);
+        }
     }
 }

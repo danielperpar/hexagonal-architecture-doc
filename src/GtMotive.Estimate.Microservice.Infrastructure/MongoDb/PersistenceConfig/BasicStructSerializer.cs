@@ -42,24 +42,22 @@ namespace GtMotive.Estimate.Microservice.Infrastructure.MongoDb.PersistenceConfi
             var obj = (object)default(T);
             var actualType = args.NominalType;
             var bsonReader = context.Reader;
+            object ret = null;
 
             bsonReader.ReadStartDocument();
 
             while (bsonReader.ReadBsonType() != BsonType.EndOfDocument)
             {
                 var name = bsonReader.ReadName();
-
                 var prop = actualType.GetProperty(name);
-                if (prop != null)
-                {
-                    var value = BsonSerializer.Deserialize(bsonReader, prop.PropertyType);
-                    prop.SetValue(obj, value, null);
-                }
+                var value = BsonSerializer.Deserialize(bsonReader, prop.PropertyType);
+                var param = new object[] { value };
+                ret = actualType.GetMethod("Create").Invoke(obj, param);
             }
 
             bsonReader.ReadEndDocument();
 
-            return (T)obj;
+            return (T)ret;
         }
     }
 }

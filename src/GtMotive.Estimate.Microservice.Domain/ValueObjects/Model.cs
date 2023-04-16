@@ -17,5 +17,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
         }
 
         public string ModelValue { get; }
+
+        public static Model Create(string input)
+        {
+            return new Model(input);
+        }
     }
 }

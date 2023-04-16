@@ -21,7 +21,7 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
 
             var oldestAllowedYear = DateTime.Now.Year - MaxYears;
 
-            if (int.Parse(trimmedYear, new CultureInfo("ES-es")) < oldestAllowedYear)
+            if (int.Parse(trimmedYear, new CultureInfo("es-ES")) < oldestAllowedYear)
             {
                 throw new DomainException($"Fabrication Year cannot be below {oldestAllowedYear}");
             }
@@ -30,5 +30,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
         }
 
         public string YearValue { get; }
+
+        public static FabricationYear Create(string input)
+        {
+            return new FabricationYear(input);
+        }
     }
 }

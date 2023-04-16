@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GtMotive.Estimate.Microservice.Api.Presenters
 {
-    public class AddVehicleToFleetPresenter : IWebApiPresenter, IOutputPortStandard<AddVehicleToFleetOutput>
+    public class AddVehicleToFleetPresenter : IAddVehicleToFleetPresenter, IOutputPortStandard<AddVehicleToFleetOutput>
     {
         public IActionResult ActionResult { get; private set; }
 
