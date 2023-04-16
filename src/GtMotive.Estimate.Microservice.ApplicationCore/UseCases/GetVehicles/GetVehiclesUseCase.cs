@@ -35,18 +35,18 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.GetVehicles
             {
                 var vehicleDto = new VehicleDto(
                     vehicle.VehicleId,
-                    vehicle.TradeMark.TradeMarkValue,
-                    vehicle.Model.ModelValue,
-                    vehicle.PlateNumber.PlateNumberValue,
-                    vehicle.FabricationYear.YearValue);
+                    vehicle.TradeMark.Value,
+                    vehicle.Model.Value,
+                    vehicle.PlateNumber.Value,
+                    vehicle.FabricationYear.Value);
 
                 if (vehicle.Renter != null)
                 {
                     var renterDto = new RenterDto(
                         vehicle.Renter.RenterId,
-                        vehicle.Renter.Name.NameValue,
-                        vehicle.Renter.TaxIdNumber.TaxIdNumberValue,
-                        vehicle.Renter.PhoneNumber.PhoneNumberValue);
+                        vehicle.Renter.Name.Value,
+                        vehicle.Renter.TaxIdNumber.Value,
+                        vehicle.Renter.PhoneNumber.Value);
 
                     vehicleDto.Renter = renterDto;
                 }

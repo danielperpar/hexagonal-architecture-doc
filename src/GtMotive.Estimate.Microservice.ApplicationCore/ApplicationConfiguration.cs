@@ -4,6 +4,7 @@ using GtMotive.Estimate.Microservice.Api.UseCases.AddVehicleToFleet;
 using GtMotive.Estimate.Microservice.ApplicationCore.UseCases;
 using GtMotive.Estimate.Microservice.ApplicationCore.UseCases.GetVehicles;
 using GtMotive.Estimate.Microservice.ApplicationCore.UseCases.Implementations;
+using GtMotive.Estimate.Microservice.ApplicationCore.UseCases.RentVehicle;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: CLSCompliant(false)]
@@ -25,6 +26,7 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore
         {
             services.AddTransient<IUseCase<AddVehicleToFleetInput>, AddVehicleToFleetUseCase>();
             services.AddTransient<IUseCase<GetVehiclesInput>, GetVehiclesUseCase>();
+            services.AddTransient<IUseCase<RentVehicleInput>, RentVehicleUseCase>();
 
             return services;
         }

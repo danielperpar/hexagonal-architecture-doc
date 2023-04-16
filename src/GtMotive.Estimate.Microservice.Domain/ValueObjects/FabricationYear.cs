@@ -26,10 +26,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
                 throw new DomainException($"Fabrication Year cannot be below {oldestAllowedYear}");
             }
 
-            YearValue = year;
+            Value = year;
         }
 
-        public string YearValue { get; }
+        public string Value { get; }
 
         public static FabricationYear Create(string input)
         {

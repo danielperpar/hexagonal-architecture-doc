@@ -19,10 +19,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
                 throw new DomainException("Invalid phone number");
             }
 
-            PhoneNumberValue = phoneNumber.Trim();
+            Value = phoneNumber.Trim();
         }
 
-        public string PhoneNumberValue { get; }
+        public string Value { get; }
 
         public static PhoneNumber Create(string input)
         {

@@ -13,10 +13,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
                 throw new DomainException("PlateNumber cannot be empty");
             }
 
-            TaxIdNumberValue = taxIdNumber.Trim().ToUpperInvariant();
+            Value = taxIdNumber.Trim().ToUpperInvariant();
         }
 
-        public string TaxIdNumberValue { get; }
+        public string Value { get; }
 
         public static TaxIdNumber Create(string input)
         {

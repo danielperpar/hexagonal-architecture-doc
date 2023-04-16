@@ -13,10 +13,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
                 throw new DomainException("TradeMark cannot be empty");
             }
 
-            TradeMarkValue = tradeMark.Trim().ToUpperInvariant();
+            Value = tradeMark.Trim().ToUpperInvariant();
         }
 
-        public string TradeMarkValue { get; }
+        public string Value { get; }
 
         public static TradeMark Create(string input)
         {

@@ -13,10 +13,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
                 throw new DomainException("Name cannot be empty");
             }
 
-            NameValue = name.Trim().ToUpperInvariant();
+            Value = name.Trim().ToUpperInvariant();
         }
 
-        public string NameValue { get; }
+        public string Value { get; }
 
         public static Name Create(string input)
         {

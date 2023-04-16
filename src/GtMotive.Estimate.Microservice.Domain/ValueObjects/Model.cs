@@ -13,10 +13,10 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
                 throw new DomainException("Model cannot be empty");
             }
 
-            ModelValue = modelValue.Trim().ToUpperInvariant();
+            Value = modelValue.Trim().ToUpperInvariant();
         }
 
-        public string ModelValue { get; }
+        public string Value { get; }
 
         public static Model Create(string input)
         {

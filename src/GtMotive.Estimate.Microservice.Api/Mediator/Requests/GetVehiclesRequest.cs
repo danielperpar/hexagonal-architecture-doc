@@ -5,6 +5,5 @@ namespace GtMotive.Estimate.Microservice.Api.Mediator.Requests
 {
     public class GetVehiclesRequest : IRequest<IGetVehiclesPresenter>
     {
-        // The request body is empty.
     }
 }

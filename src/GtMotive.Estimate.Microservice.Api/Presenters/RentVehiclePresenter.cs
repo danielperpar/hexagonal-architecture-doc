@@ -1,11 +1,11 @@
 ﻿using GtMotive.Estimate.Microservice.Api.UseCases;
 using GtMotive.Estimate.Microservice.ApplicationCore.UseCases;
-using GtMotive.Estimate.Microservice.ApplicationCore.UseCases.GetVehicles;
+using GtMotive.Estimate.Microservice.ApplicationCore.UseCases.RentVehicle;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GtMotive.Estimate.Microservice.Api.Presenters
 {
-    public class GetVehiclesPresenter : IGetVehiclesPresenter, IOutputPortStandard<GetVehiclesOutput>, IGetVehiclesOutputPortNotFound
+    public class RentVehiclePresenter : IRentVehiclePresenter, IOutputPortStandard<RentVehicleOutput>, IRentVehicleOutportNotFound
     {
         public IActionResult ActionResult { get; private set; }
 
@@ -14,9 +14,9 @@ namespace GtMotive.Estimate.Microservice.Api.Presenters
             ActionResult = new NotFoundObjectResult(message);
         }
 
-        public void StandardHandle(GetVehiclesOutput response)
+        public void StandardHandle(RentVehicleOutput response)
         {
-            ActionResult = new OkObjectResult(response?.Vehicles);
+            ActionResult = new OkObjectResult(response?.VehicleDto);
         }
     }
 }
