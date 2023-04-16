@@ -30,7 +30,7 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.Implementation
             _addVehicleOutputPort = addVehicleOutputPort;
         }
 
-        public Task Execute(AddVehicleToFleetInput input)
+        public async Task Execute(AddVehicleToFleetInput input)
         {
             var tradeMark = new TradeMark(input?.VehicleDto.TradeMark);
             var model = new Model(input?.VehicleDto.Model);
@@ -40,11 +40,9 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.Implementation
             var vehicle = new Vehicle(Guid.NewGuid(), tradeMark, model, plateNumber, fabYear);
 
             _repository.Add(vehicle);
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
 
             BuildOutput(input?.VehicleDto);
-
-            return Task.CompletedTask;
         }
 
         private void BuildOutput(VehicleDto vehicleDto)
