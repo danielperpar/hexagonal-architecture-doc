@@ -4,16 +4,11 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
 {
     public readonly struct Model
     {
-        private readonly string _model;
-
-        public Model(string model)
+        public Model(string modelValue)
         {
-            _model = model;
+            ModelValue = modelValue;
         }
 
-        public override string ToString()
-        {
-            return _model;
-        }
+        public string ModelValue { get; }
     }
 }

@@ -4,16 +4,11 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
 {
     public readonly struct TradeMark
     {
-        private readonly string _tradeMark;
-
         public TradeMark(string tradeMark)
         {
-            _tradeMark = tradeMark;
+            TradeMarkValue = tradeMark;
         }
 
-        public override string ToString()
-        {
-            return _tradeMark;
-        }
+        public string TradeMarkValue { get; }
     }
 }

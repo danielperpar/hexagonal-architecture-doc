@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace GtMotive.Estimate.Microservice.Domain.Interfaces
 {
     /// <summary>
     /// Unit Of Work. Should only be used by Use Cases.
     /// </summary>
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         /// <summary>
         /// Applies all database changes.

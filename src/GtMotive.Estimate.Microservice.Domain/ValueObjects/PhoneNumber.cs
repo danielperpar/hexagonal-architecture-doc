@@ -4,18 +4,11 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
 {
     public readonly struct PhoneNumber
     {
-        private readonly string _prefix;
-        private readonly string _number;
-
-        public PhoneNumber(string prefix, string number)
+        public PhoneNumber(string phoneNumber)
         {
-            _prefix = prefix;
-            _number = number;
+            PhoneNumberValue = phoneNumber;
         }
 
-        public override string ToString()
-        {
-            return $"{_prefix} {_number}";
-        }
+        public string PhoneNumberValue { get; }
     }
 }

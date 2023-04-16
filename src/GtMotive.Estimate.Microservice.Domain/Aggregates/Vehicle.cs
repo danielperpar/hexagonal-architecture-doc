@@ -7,6 +7,16 @@ namespace GtMotive.Estimate.Microservice.Domain.Aggregates
 {
     public sealed class Vehicle
     {
+        public Vehicle(Guid vehicleId, TradeMark tradeMark, Model model, PlateNumber plateNumber, Year fabricationYear, Renter renter = null)
+        {
+            VehicleId = vehicleId;
+            TradeMark = tradeMark;
+            Model = model;
+            PlateNumber = plateNumber;
+            FabricationYear = fabricationYear;
+            Renter = renter;
+        }
+
         public Guid VehicleId { get; set; }
 
         public TradeMark TradeMark { get; set; }
@@ -15,7 +25,7 @@ namespace GtMotive.Estimate.Microservice.Domain.Aggregates
 
         public PlateNumber PlateNumber { get; set; }
 
-        public DateTime FabricationDate { get; set; }
+        public Year FabricationYear { get; set; }
 
         public Renter Renter { get; set; }
     }

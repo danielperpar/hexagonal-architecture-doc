@@ -1,7 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using GtMotive.Estimate.Microservice.Api.UseCases.AddVehicleToFleet;
 using GtMotive.Estimate.Microservice.ApplicationCore.Dtos;
 using GtMotive.Estimate.Microservice.ApplicationCore.UseCases.AddVehicleToFleet;
+using GtMotive.Estimate.Microservice.Domain.Aggregates;
+using GtMotive.Estimate.Microservice.Domain.Interfaces;
+using GtMotive.Estimate.Microservice.Domain.ValueObjects;
 
 #pragma warning disable SA1600
 
@@ -12,16 +16,34 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.Implementation
     /// </summary>
     public sealed class AddVehicleToFleetUseCase : IUseCase<AddVehicleToFleetInput>
     {
+        private readonly IRepository<Vehicle> _repository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IOutputPortStandard<AddVehicleToFleetOutput> _addVehicleOutputPort;
 
-        public AddVehicleToFleetUseCase(IOutputPortStandard<AddVehicleToFleetOutput> addVehicleOutputPort)
+        public AddVehicleToFleetUseCase(
+            IRepository<Vehicle> repository,
+            IUnitOfWork unitOfWork,
+            IOutputPortStandard<AddVehicleToFleetOutput> addVehicleOutputPort)
         {
+            _repository = repository;
+            _unitOfWork = unitOfWork;
             _addVehicleOutputPort = addVehicleOutputPort;
         }
 
         public Task Execute(AddVehicleToFleetInput input)
         {
+            var tradeMark = new TradeMark(input?.VehicleDto.TradeMark);
+            var model = new Model(input?.VehicleDto.Model);
+            var plateNumber = new PlateNumber(input?.VehicleDto.PlateNumber);
+            var fabYear = new Year(input?.VehicleDto.FabricationYear);
+
+            var vehicle = new Vehicle(Guid.NewGuid(), tradeMark, model, plateNumber, fabYear);
+
+            _repository.Add(vehicle);
+            _unitOfWork.Save();
+
             BuildOutput(input?.VehicleDto);
+
             return Task.CompletedTask;
         }
 

@@ -1,23 +1,14 @@
 ﻿#pragma warning disable SA1600
 
-using System;
-
 namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
 {
     public readonly struct Name
     {
-        private readonly string _firstName = string.Empty;
-        private readonly string _lastName = string.Empty;
-
-        public Name(string firstName, string lastName)
+        public Name(string name)
         {
-            _firstName = firstName;
-            _lastName = lastName;
+            NameValue = name;
         }
 
-        public override string ToString()
-        {
-            return $"{_firstName} {_lastName}";
-        }
+        public string NameValue { get; }
     }
 }

@@ -7,26 +7,53 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.Dtos
     /// </summary>
     public class VehicleDto
     {
-        public VehicleDto(Guid vehicleId, string tradeMark, string model, string plateNumber, DateTime fabricationDate, RenterDto renter = null)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VehicleDto"/> class.
+        /// </summary>
+        /// <param name="vehicleId">Vehicle Id.</param>
+        /// <param name="tradeMark">Vehicle tradeMark.</param>
+        /// <param name="model">Vehicle model.</param>
+        /// <param name="plateNumber">Vehicle plateNumber.</param>
+        /// <param name="fabricationYear">Vehicle fabrication year.</param>
+        /// <param name="renter">Vehicle renter.</param>
+        public VehicleDto(Guid vehicleId, string tradeMark, string model, string plateNumber, string fabricationYear, RenterDto renter = null)
         {
             VehicleId = vehicleId;
             TradeMark = tradeMark;
             Model = model;
             PlateNumber = plateNumber;
-            FabricationDate = fabricationDate;
+            FabricationYear = fabricationYear;
             Renter = renter;
         }
 
+        /// <summary>
+        /// Gets or sets the vehicle Id.
+        /// </summary>
         public Guid VehicleId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the trade mark.
+        /// </summary>
         public string TradeMark { get; set; }
 
+        /// <summary>
+        /// Gets or sets the model.
+        /// </summary>
         public string Model { get; set; }
 
+        /// <summary>
+        /// Gets or sets the plate number.
+        /// </summary>
         public string PlateNumber { get; set; }
 
-        public DateTime FabricationDate { get; set; }
+        /// <summary>
+        /// Gets or sets the fabrication year.
+        /// </summary>
+        public string FabricationYear { get; set; }
 
+        /// <summary>
+        /// Gets or sets the vehicle renter.
+        /// </summary>
         public RenterDto Renter { get; set; }
     }
 }
