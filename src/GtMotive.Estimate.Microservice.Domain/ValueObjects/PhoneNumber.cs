@@ -1,12 +1,17 @@
-﻿#pragma warning disable SA1600
-
-using GtMotive.Estimate.Microservice.Domain.Exceptions;
-using System.Text.RegularExpressions;
+﻿using GtMotive.Estimate.Microservice.Domain.Exceptions;
 
 namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
 {
+    /// <summary>
+    /// PhoneNumber value object.
+    /// </summary>
     public readonly struct PhoneNumber
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PhoneNumber"/> struct.
+        /// </summary>
+        /// <param name="phoneNumber">phoneNumber.</param>
+        /// <exception cref="DomainException">validation exception.</exception>
         public PhoneNumber(string phoneNumber)
         {
             if (string.IsNullOrWhiteSpace(phoneNumber))
@@ -14,25 +19,22 @@ namespace GtMotive.Estimate.Microservice.Domain.ValueObjects
                 throw new DomainException("Name cannot be empty");
             }
 
-            if (!IsPhoneValid(phoneNumber))
-            {
-                throw new DomainException("Invalid phone number");
-            }
-
             Value = phoneNumber.Trim();
         }
 
+        /// <summary>
+        /// Gets the phoneNumber value.
+        /// </summary>
         public string Value { get; }
 
+        /// <summary>
+        /// /// Creation method.
+        /// </summary>
+        /// <param name="input">input.</param>
+        /// <returns>phoneNumber.</returns>
         public static PhoneNumber Create(string input)
         {
             return new PhoneNumber(input);
-        }
-
-        private static bool IsPhoneValid(string phoneNumber)
-        {
-            var regex = @"^([\+]?33[-]?|[0])?[1-9][0-9]{8}$";
-            return phoneNumber != null && Regex.IsMatch(phoneNumber, regex);
         }
     }
 }
