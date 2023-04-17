@@ -1,16 +1,24 @@
-﻿#pragma warning disable SA1600
-
-using GtMotive.Estimate.Microservice.ApplicationCore.Dtos;
+﻿using GtMotive.Estimate.Microservice.ApplicationCore.Dtos;
 
 namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.RentVehicle
 {
-    public sealed class RentVehicleOutput : IUseCaseOutput
+    /// <summary>
+    /// Output from the RentVehicle use case.
+    /// </summary>
+    public class RentVehicleOutput : IUseCaseOutput
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentVehicleOutput"/> class.
+        /// </summary>
+        /// <param name="vehicleDto">vehicleDto.</param>
         public RentVehicleOutput(VehicleDto vehicleDto)
         {
             VehicleDto = vehicleDto;
         }
 
-        public VehicleDto VehicleDto { get; set; }
+        /// <summary>
+        /// Gets VehicleDto.
+        /// </summary>
+        public VehicleDto VehicleDto { get; private set; }
     }
 }

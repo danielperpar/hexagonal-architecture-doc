@@ -1,8 +1,9 @@
-﻿#pragma warning disable SA1600
-
-namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.GetVehicles
+﻿namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.GetVehicles
 {
-    public sealed class GetVehiclesInput : IUseCaseInput
+    /// <summary>
+    /// Input to be provided to the GetVehicles use case.
+    /// </summary>
+    public class GetVehiclesInput : IUseCaseInput
     {
     }
 }

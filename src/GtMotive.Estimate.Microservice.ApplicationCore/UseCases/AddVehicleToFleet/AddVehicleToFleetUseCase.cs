@@ -7,12 +7,10 @@ using GtMotive.Estimate.Microservice.Domain.Aggregates;
 using GtMotive.Estimate.Microservice.Domain.Interfaces;
 using GtMotive.Estimate.Microservice.Domain.ValueObjects;
 
-#pragma warning disable SA1600
-
 namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.Implementations
 {
     /// <summary>
-    /// Use case representing the addition of a vehicle to the fleet.
+    /// Addition of a vehicle to the fleet.
     /// </summary>
     public sealed class AddVehicleToFleetUseCase : IUseCase<AddVehicleToFleetInput>
     {
@@ -20,6 +18,13 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.Implementation
         private readonly IUnitOfWork _unitOfWork;
         private readonly IOutputPortStandard<AddVehicleToFleetOutput> _addVehicleOutputPort;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddVehicleToFleetUseCase"/> class.
+        /// Constructs.
+        /// </summary>
+        /// <param name="repository">repository.</param>
+        /// <param name="unitOfWork">unitOfWork.</param>
+        /// <param name="addVehicleOutputPort">addVehicleOutputPort.</param>
         public AddVehicleToFleetUseCase(
             IRepository<Vehicle> repository,
             IUnitOfWork unitOfWork,
@@ -30,6 +35,11 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.Implementation
             _addVehicleOutputPort = addVehicleOutputPort;
         }
 
+        /// <summary>
+        /// Use case execution method.
+        /// </summary>
+        /// <param name="input">input.</param>
+        /// <returns>empty task.</returns>
         public async Task Execute(AddVehicleToFleetInput input)
         {
             var tradeMark = new TradeMark(input?.VehicleDto.TradeMark);

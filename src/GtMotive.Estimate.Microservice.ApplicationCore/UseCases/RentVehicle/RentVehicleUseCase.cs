@@ -1,6 +1,4 @@
-﻿#pragma warning disable SA1600
-
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using GtMotive.Estimate.Microservice.ApplicationCore.Dtos;
 using GtMotive.Estimate.Microservice.Domain.Aggregates;
 using GtMotive.Estimate.Microservice.Domain.Interfaces;
@@ -8,6 +6,9 @@ using GtMotive.Estimate.Microservice.Domain.ValueObjects;
 
 namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.RentVehicle
 {
+    /// <summary>
+    /// Rent a vehicle.
+    /// </summary>
     public sealed class RentVehicleUseCase : IUseCase<RentVehicleInput>
     {
         private readonly IRepository<Vehicle> _repository;
@@ -15,6 +16,13 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.RentVehicle
         private readonly IOutputPortStandard<RentVehicleOutput> _rentVehicleOutputPortStandard;
         private readonly IRentVehicleOutportNotFound _rentVehicleOutportNotFound;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentVehicleUseCase"/> class.
+        /// </summary>
+        /// <param name="repository">repository.</param>
+        /// <param name="unitOfWork">unitOfWork.</param>
+        /// <param name="rentVehicleOutputPortStandard">rentVehicleOutputPortStandard.</param>
+        /// <param name="rentVehicleOutportNotFound">rentVehicleOutportNotFound.</param>
         public RentVehicleUseCase(
              IRepository<Vehicle> repository,
              IUnitOfWork unitOfWork,
@@ -27,9 +35,14 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.RentVehicle
             _rentVehicleOutportNotFound = rentVehicleOutportNotFound;
         }
 
+        /// <summary>
+        /// Use case execution method.
+        /// </summary>
+        /// <param name="input">input.</param>
+        /// <returns>empty task.</returns>
         public async Task Execute(RentVehicleInput input)
         {
-            // revisar esto
+            // problemas con el Guid. tengo que poner esto así...
             if (input == null)
             {
                 return;

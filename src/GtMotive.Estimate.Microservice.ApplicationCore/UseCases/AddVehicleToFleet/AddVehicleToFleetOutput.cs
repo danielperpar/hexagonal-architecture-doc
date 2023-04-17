@@ -1,6 +1,4 @@
-﻿#pragma warning disable SA1600
-
-using GtMotive.Estimate.Microservice.ApplicationCore.Dtos;
+﻿using GtMotive.Estimate.Microservice.ApplicationCore.Dtos;
 
 namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.AddVehicleToFleet
 {
@@ -9,6 +7,10 @@ namespace GtMotive.Estimate.Microservice.ApplicationCore.UseCases.AddVehicleToFl
     /// </summary>
     public sealed class AddVehicleToFleetOutput : IUseCaseOutput
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddVehicleToFleetOutput"/> class.
+        /// </summary>
+        /// <param name="vehicleDto">vehicleDto.</param>
         public AddVehicleToFleetOutput(VehicleDto vehicleDto)
         {
             VehicleDto = vehicleDto;
