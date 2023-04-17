@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using GtMotive.Estimate.Microservice.ApplicationCore.Dtos;
 using GtMotive.Estimate.Microservice.ApplicationCore.UseCases.GetVehicles;
 using GtMotive.Estimate.Microservice.Domain.Aggregates;
 using GtMotive.Estimate.Microservice.Domain.ValueObjects;
@@ -37,30 +36,6 @@ namespace GtMotive.Estimate.Microservice.UnitTests.ApplicationCore.TestData
         public static GetVehiclesInput Input()
         {
             return new GetVehiclesInput();
-        }
-
-        public static GetVehiclesOutput Output()
-        {
-            var vehicles = new List<VehicleDto>();
-
-            var vehicle1 = new VehicleDto(
-                Guid.NewGuid(),
-                "vw",
-                "polo",
-                "b12345h",
-                DateTime.Now.Year.ToString(new CultureInfo("es-ES")));
-
-            var vehicle2 = new VehicleDto(
-                Guid.NewGuid(),
-                "ford",
-                "focus",
-                "b34567h",
-                DateTime.Now.Year.ToString(new CultureInfo("es-ES")));
-
-            vehicles.Add(vehicle1);
-            vehicles.Add(vehicle2);
-
-            return new GetVehiclesOutput(vehicles);
         }
     }
 }
